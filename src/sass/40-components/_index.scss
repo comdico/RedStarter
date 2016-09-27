@@ -4,7 +4,6 @@
 // a .product-slider-list would be in a components/_product-slider.scss
 // partial within this layer.
 
-@import 'block';
 @import 'branding';
 @import 'breadcrumb';
 @import 'button';
@@ -12,4 +11,6 @@
 @import 'footer';
 @import 'form';
 @import 'header';
+@import 'mediablock';
 @import 'nav';
+@import 'slots';
