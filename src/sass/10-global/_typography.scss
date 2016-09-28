@@ -1,3 +1,18 @@
 html {
   -webkit-font-smoothing: antialiased;
+  font-family: $font--body;
 }
+
+strong {
+	font-weight: 700;
+}
+
+.body-text p {
+    font-family: $font--body;
+    @include font-size(16px);
+    line-height: rem(40);
+    font-weight: 400;
+    @include margin(null 10px 3em 20vh);
+}
+
+

@@ -22,8 +22,8 @@ var paths = {
 
 var sassOptions = {
   outputStyle: 'expanded',
-  includePaths: ['styles'].concat(bourbon),
-  includePaths: ['styles'].concat(neat),
+  includePaths: ['sass'].concat(bourbon),
+  includePaths: ['sass'].concat(neat),
   sourcemap: true
 };
 
