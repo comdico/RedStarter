@@ -10,18 +10,31 @@ $font--alpha:'Roboto Slab', serif;
 ///
 $font--beta:'Fjalla One', serif;
 
+// Font Color
+$black: #000000;
+$white: #ffffff;
+$blue: #206cd4;
+$green: #229720;
+$lime-green: #98D981;
+$dk-green: #83bb6f;i
+$gray: #f1f1f1;
+$md-gray: #e6e6e6;
+$text-gray: #b8b8b8;
+$about-gray: #eaeaea;
+$blue-link: #0c77b0;t
 
-// calculate px to rem
+//Departments
+$default--color: #151515; //About and All
+$astronomy--color: #b435de;
+$nightstand--color: #839772;
+$environment--color: #1fa23b;
 
-@function calculateRem($size) {
-  $remSize: $size / 16px;
-  @return $remSize * 1rem;
-}
+///
+$body--color: $black;
+$author--color: $blue;
 
-@mixin font-size($size) {
-  font-size: $size;
-  font-size: calculateRem($size);
-}
+
+
 
 // Font Sizes
 ///
