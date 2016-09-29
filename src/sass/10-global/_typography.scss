@@ -1,6 +1,15 @@
 html {
   -webkit-font-smoothing: antialiased;
-  font-family: $font--body;
+}
+
+/* default OS fonts */
+body {
+	font-family: arial, sans-serif;
+}
+
+/* fonts now loaded */
+.wf-active body {
+	 font-family: $font--body;
 }
 
 strong {
@@ -13,6 +22,10 @@ strong {
     line-height: rem(40);
     font-weight: 400;
     color: $body--color;
+}
+
+.indie {
+	font-family: 'Indie Flower';
 }
 
 
