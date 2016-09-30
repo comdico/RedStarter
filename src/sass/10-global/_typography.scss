@@ -4,7 +4,7 @@ html {
 
 /* default OS fonts */
 body {
-	font-family: arial, sans-serif;
+	font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; 
 }
 
 /* fonts now loaded */
@@ -18,9 +18,10 @@ strong {
 
 .copy p {
     font-family: $font--body;
-    @include font-size(16px);
-    line-height: rem(40);
-    font-weight: 400;
+	font-size: calc(.8rem + 0.3vw);
+    line-height: 1.6;
+    max-width: calc(56rem + 0.5vw);
+    margin-bottom: 0.5rem;
     color: $body--color;
 }
 

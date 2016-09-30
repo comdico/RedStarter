@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     webserver = require('gulp-webserver');
 
 var prefixerOptions = {
-  browsers: ['last 2 versions']
+  browsers: ['last 4 versions']
 };
 
 var paths = {
@@ -63,10 +63,10 @@ var onError = function(err) {
 
 gulp.task('sass', function () {
     return gulp.src(paths.scss)
-    .pipe(sass(sassOptions))
-    .pipe(prefix(prefixerOptions))
-    .pipe(plumber({errorHandler: onError}))
     .pipe(sourcemaps.init())
+    .pipe(sass(sassOptions))
+    .pipe(plumber({errorHandler: onError}))
+    .pipe(prefix(prefixerOptions))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.cssOutputFolder))
 });
