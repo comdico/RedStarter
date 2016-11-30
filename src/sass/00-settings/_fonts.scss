@@ -10,20 +10,15 @@ $font--alpha:'Roboto Slab', serif;
 ///
 $font--beta:'Fjalla One', serif;
 
-
-// calculate px to rem
-
-@function calculateRem($size) {
-  $remSize: $size / 16px;
-  @return $remSize * 1rem;
-}
-
-@mixin font-size($size) {
-  font-size: $size;
-  font-size: calculateRem($size);
-}
-
 // Font Sizes
 ///
+
+
+
+
+
+
+
+
 
 

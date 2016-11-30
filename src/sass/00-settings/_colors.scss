@@ -1,34 +1,26 @@
 ////
 /// @group colors
 ////
+$about-gray: #eaeaea;
+$nav-lt-gray: #2a2a2a;
+$nav-dk-gray: #1a1a1a;
 
 /// @type color
-$color--primary--blue: #0B81C9;
-/// @type color
-$color--primary--orange: #F27A22;
-/// @type color
-$color--primary: $color--primary--blue;
+// Font Color
+$black: #000000;
+$white: #ffffff;
+$blue: #206cd4;
+$green: #229720;
+$lime-green: #98D981;
+$dk-green: #83bb6f;
+$gray: #f1f1f1;
+$md-gray: #e6e6e6;
+$text-gray: #b8b8b8;
+$blue-link: #0c77b0;
+$footer-link: #afafaf;
 
-/// @type color
-$color--secondary--blue: #0E6BAC;
-/// @type color
-$color--secondary: $color--secondary--blue;
 
-/// @type color
-$color--gray--white: hsl(0, 0%, 91.1%);
-/// @type color
-$color--gray--lightest: hsl(0, 0%, 85.9%);
-/// @type color
-$color--gray--lighter: hsl(0, 0%, 78%);
-/// @type color
-$color--gray--light: hsl(0, 0%, 70.2%);
-/// @type color
-$color--gray: hsl(228, 2.3%, 41.8%);
-/// @type color
-$color--gray--dark: hsl(0, 0%, 40%);
-/// @type color
-$color--gray--darker: hsl(0, 0%, 20%);
-/// @type color
-$color--gray--darkest: hsl(0, 0%, 16.1%);
-/// @type color
-$color--gray--black: hsl(0, 0%, 7.8%);
+
+
+// // Font Colors
+// ///

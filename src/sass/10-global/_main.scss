@@ -1,8 +1,7 @@
-
-
 ::-moz-selection {
     background: #b3d4fc;
     text-shadow: none;
+
 }
 
 ::selection {
@@ -17,6 +16,12 @@ hr {
     border-top: 1px solid #ccc;
     margin: 1em 0;
     padding: 0;
+}
+
+.fancy-hr {
+    height: 6px;
+    background: url(images/fancy-hr.png) repeat-x 0 0;
+    border: 0;
 }
 
 audio,
