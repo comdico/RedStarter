@@ -1,12 +1,20 @@
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
-    neat = require('node-neat').includePaths,
+    // breakpoint = require('breakpoint-sass').includePaths,
     bourbon = require("node-bourbon").includePaths,
     prefix = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
+    imagemin = require('gulp-imagemin'),
     plumber = require('gulp-plumber'),
     sourcemaps = require('gulp-sourcemaps'),
-    webserver = require('gulp-webserver');
+    handlebars = require ('gulp-compile-handlebars'),
+    newer = require('gulp-newer'),
+    rename = require ('gulp-rename'),
+    browsersync = require ('browser-sync');
+    reload = browsersync.reload;
+    // webserver = require('gulp-webserver'),
+    astro = require('./src/data/astro.json');
+
 
 var prefixerOptions = {
   browsers: ['last 4 versions']
@@ -15,15 +23,25 @@ var prefixerOptions = {
 var paths = {
     scss: 'src/sass/*.scss',
     sassInputFiles: ['src/sass/**/*.scss'],
+    htmlInputFiles: ['src/templates/**/*.hbs'],
     cssOutputFolder: 'public/css/',
-    jsOutputFolder: 'public/js/',
-    htmlInputFiles: ['public/**/*.html']
+    imgInputFiles: ['src/img/*.*'],
+    imgOutputFiles: 'public/img/',
+    jsOutputFolder: 'public/js/'
 };
 
+var dest = 'public/';
+
 var sassOptions = {
-  outputStyle: 'expanded',
-  includePaths: ['sass'].concat(bourbon),
-  includePaths: ['sass'].concat(neat),
+  outputStyle: 'compressed',
+  includePaths: [
+            './bower_components/susy/sass',
+            './bower_components/susy/lib',
+            './bower_components/susy/sass/susy',
+            // require('breakpoint-sass').includePaths,
+            './bower_components/breakpoint-sass/stylesheets',
+            require('node-bourbon').includePaths
+        ],
   sourcemap: true
 };
 
@@ -54,6 +72,15 @@ var onError = function(err) {
   this.emit('end');
 };
 
+var syncOpts = {
+  server: {
+    baseDir: dest,
+    index: 'index.html'
+  },
+  open: false,
+  notify: true
+};
+
 
 // gulp.task('js', function() {
 //   return gulp.src('builds/sassEssentials/js/myscript.js')
@@ -63,26 +90,59 @@ var onError = function(err) {
 
 gulp.task('sass', function () {
     return gulp.src(paths.scss)
-    .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.init())
     .pipe(sass(sassOptions))
     .pipe(plumber({errorHandler: onError}))
     .pipe(prefix(prefixerOptions))
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.cssOutputFolder))
+    .pipe(reload({stream:true}))
+});
+
+gulp.task('templates', function(){
+    var data = {
+      year: new Date().getFullYear(),
+      astromenu: astro.astroItems
+    };
+
+    var options = {
+      batch: ['src/templates/partials']
+    }
+
+    return gulp.src(['src/templates/**/*.hbs', '!src/templates/partials/**/*.hbs'])
+    .pipe(handlebars(data, options))
+    .pipe(rename (function (path) {
+      path.extname = '.html'
+    }))
+    .pipe(gulp.dest('./public/'))
+    .pipe(reload({stream:true}));
 });
 
 gulp.task('watch', function() {
   gulp.watch(paths.sassInputFiles, ['sass']);
+  gulp.watch(paths.htmlInputFiles, ['templates']);
 });
 
-
-
-gulp.task('webserver', function() {
-    gulp.src('public/')
-        .pipe(webserver({
-            livereload: true,
-            open: true
-        }));
+//manage images
+gulp.task('images', function () {
+  return gulp.src(paths.imgInputFiles)
+  .pipe(newer(paths.imgOutputFiles))
+  .pipe(imagemin())
+  .pipe(gulp.dest(paths.imgOutputFiles));
 });
 
-gulp.task('default', ['sass', 'watch', 'webserver']);
+gulp.task('browsersync', function() {
+  browsersync(syncOpts);
+
+});
+
+// gulp.task('webserver', function() {
+//     gulp.src('public/')
+//         .pipe(webserver({
+//             livereload: true,
+//             open: true,
+//             host: '0.0.0.0'
+//         }));
+// });
+
+gulp.task('default', ['sass', 'watch', 'templates', 'images', 'browsersync']);

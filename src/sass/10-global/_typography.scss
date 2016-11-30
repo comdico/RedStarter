@@ -25,8 +25,51 @@ strong {
     color: $body--color;
 }
 
-.indie {
-	font-family: 'Indie Flower';
+.header__alpha {
+	font-family: $font--alpha;
+	font-size: rem(110);
+	// font-size: calc(6.5rem + 0.3vw);
+	// font-size: 6.6vw;
+	color: $white; 
+	font-weight: 700;
+	line-height: 120px;
+	text-shadow: 2px 2px #000;
+	margin:0;
 }
 
+.header__beta {
+	font-family: $font--beta;
+	margin:0;
+}
+
+.header__author {
+	font-family: $font--alpha;
+	color: $white;
+	font-weight: 700; 
+	font-size: rem(22);
+	text-shadow: 2px 2px #000;
+	margin: 10px 0 0 0;
+}
+
+.header__keywords {
+	font-family: $font--beta;
+	color: $text-gray;
+	text-transform: uppercase;
+	font-size: rem(20);
+	text-shadow: 2px 2px #000;
+	letter-spacing: 1px;
+	margin-top:12px;
+
+	span {
+
+	}
+}
+
+.header__keywords span::after {
+			content:"•";
+			color: $text-gray;
+			margin-left: 5px;
+		
+    		
+		}
 
